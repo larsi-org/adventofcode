@@ -3,11 +3,11 @@ package year2022
 import util.asResourceFile
 
 object Day {
-    fun part1(input: List<String>): Int {
+    private fun part1(input: List<String>): Int {
         return 0
     }
 
-    fun part2(input: List<String>): Int {
+    private fun part2(input: List<String>): Int {
         return 0
     }
 

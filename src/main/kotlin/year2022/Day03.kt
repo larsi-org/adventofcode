@@ -3,7 +3,7 @@ package year2022
 import util.asResourceFile
 
 object Day03 {
-    inline fun priority(c: Char): Int = when (c) {
+    private fun priority(c: Char): Int = when (c) {
         in 'a'..'z' ->  1 + c.code - 'a'.code
         in 'A'..'Z' -> 27 + c.code - 'A'.code
         else -> 0

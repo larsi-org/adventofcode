@@ -9,29 +9,29 @@ object Day02 {
 
         val shapeValue: HashMap<String, Int> = hashMapOf("X" to 1, "Y" to 2, "Z" to 3)
 
-        val winValue: HashMap<String, HashMap<String, Int>> = HashMap<String, HashMap<String, Int>>()
-        winValue["A"] = hashMapOf("X" to 3, "Y" to 6, "Z" to 0)
-        winValue["B"] = hashMapOf("X" to 0, "Y" to 3, "Z" to 6)
-        winValue["C"] = hashMapOf("X" to 6, "Y" to 0, "Z" to 3)
+        val winValue = mapOf(
+            "A" to mapOf("X" to 3, "Y" to 6, "Z" to 0),
+            "B" to mapOf("X" to 0, "Y" to 3, "Z" to 6),
+            "C" to mapOf("X" to 6, "Y" to 0, "Z" to 3)
+        )
 
-        val shape: HashMap<String, HashMap<String, String>> = HashMap<String, HashMap<String, String>>()
-        shape["A"] = hashMapOf("X" to "Z", "Y" to "X", "Z" to "Y")
-        shape["B"] = hashMapOf("X" to "X", "Y" to "Y", "Z" to "Z")
-        shape["C"] = hashMapOf("X" to "Y", "Y" to "Z", "Z" to "X")
+        val shape = mapOf(
+            "A" to mapOf("X" to "Z", "Y" to "X", "Z" to "Y"),
+            "B" to mapOf("X" to "X", "Y" to "Y", "Z" to "Z"),
+            "C" to mapOf("X" to "Y", "Y" to "Z", "Z" to "X")
+        )
 
-        var currentSum = 0
-        for (line in input) {
-            val (x, y) = line.split(" ")
-            currentSum += shapeValue[y]?.plus(winValue[x]?.get(y)!!)!!
+        val sum1 = input.sumOf {
+            val (x, y) = it.split(" ")
+            shapeValue[y]?.plus(winValue[x]?.get(y)!!)!!
         }
-        println(currentSum)
+        println(sum1)
 
-        currentSum = 0
-        for (line in input) {
-            val (x, y) = line.split(" ")
+        val sum2 = input.sumOf {
+            val (x, y) = it.split(" ")
             val currentShape = shape[x]?.get(y)!!
-            currentSum += shapeValue[currentShape]?.plus(winValue[x]?.get(currentShape)!!)!!
+            shapeValue[currentShape]?.plus(winValue[x]?.get(currentShape)!!)!!
         }
-        println(currentSum)
+        println(sum2)
     }
 }
